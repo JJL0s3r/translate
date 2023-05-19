@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Tradutor</title>
+</head>
+<body>
+  <div class="container">
+    <div class="content">
+      <div class="divSelects">
+        <select class="selectFrom"></select>
+        <select class="selectTo"></select>
+      </div>
+      <div class="divTextareas">
+        <textarea id="textareaFrom" rows="8" placeholder="Digitar texto"></textarea>
+        <textarea id="textareaTo" rows="8" placeholder="Tradução" disabled></textarea>
+      </div>
+      <button id="btnTranslate">TRADUZIR</button>
+      <button id="btnCopy">COPIAR</button>
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+  <script>
+
+const btnCopy = document.querySelector("#btnCopy");
+
+btnCopy.addEventListener("click", () => {
+  const textareaTo = document.querySelector("#textareaTo");
+  navigator.clipboard.writeText(textareaTo.value)
+    .then(() => {
+      alert("Tradução copiada", textareaTo.value);
+    })
+    .catch((error) => {
+      console.error("Erro ao copiar tradução", error);
+    });
+});
+
+
+  </script>
+</body>
+</html>
